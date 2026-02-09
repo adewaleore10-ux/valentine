@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Valentine 💖</title>
+
+
+<style>
+body {
+  background: linear-gradient(to bottom right, #ffb6c1, #ffe6f0);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.card {
+  margin: 40px auto;
+  padding: 25px;
+  width: 85%;
+  max-width: 520px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.teddy {
+  font-size: 90px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  color: #d63384;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background: #ff4da6;
+  color: white;
+  border: none;
+}
+
+#yes:hover {
+  background: #ff1a8c;
+}
+
+#no {
+  background: #fff;
+  border: 2px solid #ff4da6;
+}
+
+#msg {
+  font-size: 22px;
+  margin-top: 15px;
+  color: #c2185b;
+}
+
+.heart {
+  position: fixed;
+  animation: fall 4s linear infinite;
+  color: #ff4da6;
+  font-size: 20px;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10px); }
+  to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <div class="teddy">🧸</div>
+
+  <h1>Will you be my Valentine? 💌</h1>
+
+  <button id="yes" onclick="yes()">Yes</button>
+  <button id="no" onclick="no()">No</button>
+
+  <p id="msg"></p>
+</div>
+
+<script>
+let size = 18;
+let noCount = 0;
+
+const reasons = [
+  "Are you sure? I was really excited to ask you 🥺",
+  "But I already imagined us having the best Valentine’s together 💕",
+  "My teddy bear will cry if you say no 🧸💔",
+  "I even picked this song just for you 🎶🥹",
+  "Okay but… I’ll be really sad 😭",
+  "This could’ve been such a cute love story 💌",
+  "Last chance… my heart is on the line 💖"
+];
+
+function yes(){
+  document.getElementById("msg").innerHTML = "I love you to babby! 💖";
+  document.getElementById("music").play();
+  createHearts();
+}
+
+function no(){
+  const msg = reasons[Math.min(noCount, reasons.length - 1)];
+  document.getElementById("msg").innerHTML = msg;
+
+  noCount++;
+
+  // make Yes button grow
+  size += 8;
+  document.getElementById("yes").style.fontSize = size + "px";
+}
+
+function createHearts(){
+  for(let i=0; i<25; i++){
+    let h = document.createElement("div");
+    h.innerHTML = "❤";
+    h.className = "heart";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.animationDuration = (2 + Math.random()*3) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 4000);
+  }
+}
+</script>
+<audio controls>
+  <source src="https://thoughtless-tan-wkchdabq8u.edgeone.app/Asake_-_Why_Love_Tunesloaded.com.ng.mp3" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>
